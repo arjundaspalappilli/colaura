@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeFake</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        @font-face {
+            font-family: 'Recoleta';
+            src: url('../static/fonts/Recoleta-RegularDEMO.otf') format('opentype');
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Recoleta', sans-serif; /* Use Recoleta font */
+            background-color: #5FA777; /* Set background color to blue */
+            color: #FCF8F7; /* Change text color to white for better contrast */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        h2 {
+            font-weight: bold; /* Make the text bold */
+            font-size: 2.5rem; /* Increase the font size (adjust as needed) */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h2>SeeFake</h2>
+            <div class="mt-4">
+                <h3>The image is {{ 'real' if label == 'REAL' else 'AI-generated' }}.</h3>
+                <img src="{{ image_path }}" class="img-fluid" alt="Uploaded Image" width="100">
+            </div>
+            <a href="{{ url_for('home') }}" class="btn btn-light mt-4">Upload another image</a>
+        </div>
+    </div>
+</body>
+</html>

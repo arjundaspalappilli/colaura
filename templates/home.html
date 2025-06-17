@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeFake</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        @font-face {
+            font-family: 'Recoleta';
+            src: url('../static/fonts/Recoleta-RegularDEMO.otf') format('opentype');
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Recoleta', sans-serif; /* Use Recoleta font */
+            background-color: #5FA777; /* Set background color to blue */
+            color: #FCF8F7; /* Change text color to white for better contrast */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        h2 {
+            font-weight: bold; /* Make the text bold */
+            font-size: 3rem; /* Increase the font size (adjust as needed) */
+        }
+        form {
+            text-align: center;
+        }
+        .custom-file-label {
+            text-align: left; /* Left-align the label text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h2>SeeFake</h2>
+            <form action="{{ url_for('result') }}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="customFile" required>
+                        <label class="custom-file-label" for="customFile">Select image</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-light mt-4">Check</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to update the label text when a file is selected
+        document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+            var fileName = document.getElementById("customFile").files[0].name;
+            var nextSibling = e.target.nextElementSibling;
+            nextSibling.innerText = fileName;
+        });
+    </script>
+</body>
+</html>
